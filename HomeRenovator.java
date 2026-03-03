@@ -74,7 +74,38 @@ System.out.printf("\n[Paint module complete. Added $%.2f to running total.]\n",m
    private static void flooring(Scanner scanner){
       System.out.println("\n-- Flooring --");
      double length = getPositiveDouble(scanner, "Enter room length (ft): ");
-    double length = getPositiveDouble(scanner, "Enter room length (ft): ");
+     double width = getPositiveDouble(scanner, "Enter room width (ft): ");
+
+     System.out.println("\nSelect flooring type:");
+     System.out.println("1) Laminate ($2.25/sq ft, 7% waste)");
+     System.out.println("2) Hardwood ($5.50/sq ft, 10% waste)");
+     System.out.println("3) Tile ($3.90/sq ft, 8% waste)"); 
+
+     int type;
+     double price = 0.0;
+     double waste = 0.0;
+     while(true){
+       type = getIntInput(scanner, "choice" ");
+       if( type == 1)
+       price = LAMINATE_PRICE;
+       waste = LAMINATE_WASTE;
+       break;
+     } else if( type == 2)
+       price = HARDWOOD_PRICE;
+       waste = HARDWOOD_WASTE;
+       break;
+   } else if( type == 3)
+       price = TILE_PRICE;
+       waste = TILE_WASTE;
+       break;
+} else {
+  System.out.println("Invalid flooring option. Try again.");
+}}
+  double area = length * width;
+  double adjustedArea = area * (1 + waste);
+  double materialCost = adjustedArea * price;
+  double tax = materialCost * TAX_RATE;
+  double lineTotal = 
      
 
 
