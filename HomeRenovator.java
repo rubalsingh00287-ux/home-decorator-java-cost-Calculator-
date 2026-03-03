@@ -105,7 +105,73 @@ System.out.printf("\n[Paint module complete. Added $%.2f to running total.]\n",m
   double adjustedArea = area * (1 + waste);
   double materialCost = adjustedArea * price;
   double tax = materialCost * TAX_RATE;
-  double lineTotal = 
+  double lineTotal = materialCost + tax;
+  subtotal += materialCost;
+
+ System.out.printf("\nFlooring area: %.2f sq ft\n",area);
+ Syste.out.printf("Adjusted area (with %.0f%% waste): %.2f sq ft\n", waste * 100, adjustedArea);
+ System.out.printf("Price per sq ft: $%.2f\n",price);
+ System.out.printf("Material cost: $%.2f\n",materialCost);
+ System.out.printf("Line total (with tax): $%.2f\n",lineTotal);
+}
+
+   private static void viewTotals(){
+     double tax = subtotal * TAX_RATE;
+     double grandTotal = subtotal + tax;
+     System.out.println("\n-- Current Totals --");
+     System.out.printf("Subtotal: $%.2f\n",subtotal);
+     System.out.printf("Tax: $%.2f\n",tax);
+     System.out.printf("Grand Total: $%.2f\n",grandTotal);
+   }
+
+private static double getPositiveDouble(Scanner scanner, String prompt){
+   double value;
+    while(true){
+    System.out.print(prompt);
+    if(scanner.hasNextDouble()) {
+      value = scanner.nextDouble();
+      scanner.nextLine();
+      if( value > 0) {
+        return value;
+      }
+    } else {
+      scanner.nextLine();
+    }
+    System.out.println("Invalid input. Please enter a positive value.");
+    }}
+ private static int getNonNegativeInt( Scanner scanner, String prompt){
+    int value;
+   while(true) {
+     System.out.print(prompt);
+     if(scanner.hasNextInt()){
+       value = scanner.nextInt();
+       if( value >= 0){
+         return value;
+       }
+     }else {
+       scanner.nextLine();
+     }
+    System.out.println("Invalid input. Please enter 0 or greater.");
+   }}
+  private static int getIntInput(Scanner scanner, String prompt){
+    int value;
+    while(true)
+      {
+      System.out.print(prompt);
+      if(scanner.hasNextInt()){
+        value = scanner.nextInt();
+        scanner.nextLine();
+        return value;
+      } else {
+        scanner.nextLine();
+        System.out.println("Invalid input. Please enter a valid number.");
+      }}
+  }
+}
+
+      
+     
+
      
 
 
