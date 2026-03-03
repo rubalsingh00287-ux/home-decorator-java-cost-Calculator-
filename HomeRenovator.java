@@ -45,31 +45,38 @@ public class HomeRenovator{
   }
 
   private static void printMenu(){
-    System.out.println("\n-- Paint Room --");
-    double length = getPositiveDouble(scanner,"Enter room length (ft): ");
-    double width = getPositiveDouble(scanner,"Enter room width (ft): ");
-    double height = getPositiveDouble(scanner,"Enter room height (ft): ");
+    System.out.println("\n=== Home Renovator ===");
+    System.out.println("1) Paint Room");
+    System.out.println("2) Flooring");
+    System.out.println("3) View Totals");
+    System.out.println("0) Exit");
+  }
+     Private static void paintRoom(Scanner scanner){
+        System.out.println("\n-- Paint Room --");
+        double length = getPositiveDouble(scanner,"Enter room length (ft): ");
+        double width = getPositiveDouble(scanner,"Enter room width (ft): ");
+        double height = getPositiveDouble(scanner,"Enter room height (ft): ");
 
-    int doors = getNonNegativeInt(scanner,"Enter number of doors: ");
-    int windows = getNonNegativeInt(scanner,"Enter number of windows: ");
+        int doors = getNonNegativeInt(scanner,"Enter number of doors: ");
+        int windows = getNonNegativeInt(scanner,"Enter number of windows: ");
 
-    double perimeter = 2 * (length + width);
-    double wallArea = perimeter * height;
-    double openingArea = (doors * DOOR_AREA) + (windows * WINDOW_AREA);
-    if( netArea < 0 ) netArea = 0;
+        double perimeter = 2 * (length + width);
+        double wallArea = perimeter * height;
+        double openingArea = (doors * DOOR_AREA) + (windows * WINDOW_AREA);
+          if( netArea < 0 ) netArea = 0;
 
-    double gallons = Math.ceil( netArea / PAINT_COVERAGE );
-    double materialCost = gallons * PAINT_PRICE;
-    double tax = materialCost * TAX_RATE ;
-    double lineTotal = materialCost + tax;
-     subtotal += materialCost;
-System.out.printf("\nWall area: %.2f sq ft\n",wallArea);
-System.out.printf("Opeinings area: %.2f sq ft\n",openingArea);
-System.out.printf("Net paint area: %.2f sq ft\n",netArea);
-System.out.printf("Gallons required: %.2f\n",gallons);
-System.out.printf("Material cost (@ $%.2f/gal): $%.2f\n",PAINT_PRICE,materialCost);
-System.out.printf("Line total (with tax): $%.2f\n",lineTotal);
-System.out.printf("\n[Paint module complete. Added $%.2f to running total.]\n",materialCost);
+          double gallons = Math.ceil( netArea / PAINT_COVERAGE );
+          double materialCost = gallons * PAINT_PRICE;
+          double tax = materialCost * TAX_RATE ;
+          double lineTotal = materialCost + tax;
+          subtotal += materialCost;
+        System.out.printf("\nWall area: %.2f sq ft\n",wallArea);
+        System.out.printf("Opeinings area: %.2f sq ft\n",openingArea);
+        System.out.printf("Net paint area: %.2f sq ft\n",netArea);
+        System.out.printf("Gallons required: %.2f\n",gallons);
+        System.out.printf("Material cost (@ $%.2f/gal): $%.2f\n",PAINT_PRICE,materialCost);
+        System.out.printf("Line total (with tax): $%.2f\n",lineTotal);
+        System.out.printf("\n[Paint module complete. Added $%.2f to running total.]\n",lineTotal);
   }
    private static void flooring(Scanner scanner){
       System.out.println("\n-- Flooring --");
@@ -111,8 +118,9 @@ System.out.printf("\n[Paint module complete. Added $%.2f to running total.]\n",m
  System.out.printf("\nFlooring area: %.2f sq ft\n",area);
  Syste.out.printf("Adjusted area (with %.0f%% waste): %.2f sq ft\n", waste * 100, adjustedArea);
  System.out.printf("Price per sq ft: $%.2f\n",price);
- System.out.printf("Material cost: $%.2f\n",materialCost);
- System.out.printf("Line total (with tax): $%.2f\n",lineTotal);
+ System.out.printf("Material cost: $%,.2f\n",materialCost);
+ System.out.printf("Line total (with tax): $%,.2f\n",lineTotal);
+ System.out.printf("\n[Flooring module complete. Added $%,.2f to running total.]\n",lineTotal);
 }
 
    private static void viewTotals(){
