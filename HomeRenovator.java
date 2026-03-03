@@ -13,7 +13,7 @@ public class HomeRenovator{
 
   private static final double LAMINATE_WASTE = 0.07;
   private static final double HARDWOOD_WASTE = 0.10;
-  private static final double TILE_PRICE = 0.08;
+  private static final double TILE_WASTE = 0.08;
   private static double  subtotal = 0.0;
 
   public static void main(String[] args){
@@ -21,10 +21,10 @@ public class HomeRenovator{
     int choice;
       do{
         printMenu();
-        choice = getIntInput(Scanner,"choice: ");
+        choice = getIntInput(scanner,"choice: ");
         switch(choice){
           case 1:
-            peintRoom(scanner);
+            paintRoom(scanner);
             break;
           case 2:
             flooring(scanner);
@@ -32,7 +32,7 @@ public class HomeRenovator{
           case 3:
             viewTotals();
             break;
-          case 0;
+          case 0:
     System.out.println("\nExiting Home Renovator...");
     System.out.println("Thank you for using the program!");
         break;
@@ -51,7 +51,7 @@ public class HomeRenovator{
     System.out.println("3) View Totals");
     System.out.println("0) Exit");
   }
-     Private static void paintRoom(Scanner scanner){
+     private static void paintRoom(Scanner scanner){
         System.out.println("\n-- Paint Room --");
         double length = getPositiveDouble(scanner,"Enter room length (ft): ");
         double width = getPositiveDouble(scanner,"Enter room width (ft): ");
@@ -63,6 +63,7 @@ public class HomeRenovator{
         double perimeter = 2 * (length + width);
         double wallArea = perimeter * height;
         double openingArea = (doors * DOOR_AREA) + (windows * WINDOW_AREA);
+        double netArea = wallArea - openingArea;
           if( netArea < 0 ) netArea = 0;
 
           double gallons = Math.ceil( netArea / PAINT_COVERAGE );
@@ -92,16 +93,16 @@ public class HomeRenovator{
      double price = 0.0;
      double waste = 0.0;
      while(true){
-       type = getIntInput(scanner, "choice" ");
-       if( type == 1)
+       type = getIntInput(scanner, "choice ");
+       if( type == 1){
        price = LAMINATE_PRICE;
        waste = LAMINATE_WASTE;
        break;
-     } else if( type == 2)
+     } else if( type == 2){
        price = HARDWOOD_PRICE;
        waste = HARDWOOD_WASTE;
        break;
-   } else if( type == 3)
+   } else if( type == 3){
        price = TILE_PRICE;
        waste = TILE_WASTE;
        break;
@@ -116,7 +117,7 @@ public class HomeRenovator{
   subtotal += materialCost;
 
  System.out.printf("\nFlooring area: %.2f sq ft\n",area);
- Syste.out.printf("Adjusted area (with %.0f%% waste): %.2f sq ft\n", waste * 100, adjustedArea);
+ System.out.printf("Adjusted area (with %.0f%% waste): %.2f sq ft\n", waste * 100, adjustedArea);
  System.out.printf("Price per sq ft: $%.2f\n",price);
  System.out.printf("Material cost: $%,.2f\n",materialCost);
  System.out.printf("Line total (with tax): $%,.2f\n",lineTotal);
@@ -127,9 +128,9 @@ public class HomeRenovator{
      double tax = subtotal * TAX_RATE;
      double grandTotal = subtotal + tax;
      System.out.println("\n-- Current Totals --");
-     System.out.printf("Subtotal: $%.2f\n",subtotal);
+     System.out.printf("Subtotal: $%,.2f\n",subtotal);
      System.out.printf("Tax: $%.2f\n",tax);
-     System.out.printf("Grand Total: $%.2f\n",grandTotal);
+     System.out.printf("Grand Total: $%,.2f\n",grandTotal);
    }
 
 private static double getPositiveDouble(Scanner scanner, String prompt){
